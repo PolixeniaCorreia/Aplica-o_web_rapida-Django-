@@ -8,11 +8,13 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     token = models.CharField(max_length=255, null=True, blank=True)
     # Adicione as linhas a seguir no seu arquivo `Profile.py`
-    favorites = models.ManyToManyField(User, blank=True,
+    image = models.ImageField(null=True, blank=True)
+    # Adicione antes das três linhas abaixo para deixar organizado
+    favorites = models.ManyToManyField(User, null=True, blank=True,
 related_name='favorites')
-    specialties = models.ManyToManyField(Speciality, blank=True,
-related_name='specialties')
-    addresses = models.ManyToManyField(Address, blank=True,
+    specialties = models.ManyToManyField(Speciality, null=True,
+blank=True, related_name='specialties')
+    addresses = models.ManyToManyField(Address, null=True, blank=True,
 related_name='addresses')
 
 def __str__(self):
